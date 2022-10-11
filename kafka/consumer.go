@@ -21,6 +21,8 @@ import (
 	"math"
 	"time"
 	"unsafe"
+	"log"
+	"os"
 )
 
 /*
@@ -398,6 +400,9 @@ func (c *Consumer) ReadMessage(timeout time.Duration) (*Message, error) {
 			return nil, e
 		default:
 			// Ignore other event types
+			l := log.New(os.Stderr, "", 0)
+			l.Println("FAJ")
+			l.Println(ev.String())
 		}
 
 		if timeout > 0 {
